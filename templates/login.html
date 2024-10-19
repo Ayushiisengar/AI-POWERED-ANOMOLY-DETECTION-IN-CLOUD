@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* More modern font */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #0066cc, #003366); /* Gradient background for visual appeal */
+    color: #fff; /* Change text color for better contrast */
+    scroll-behavior: smooth; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+header {
+    background-color: rgba(0, 51, 102, 0.9); /* Slight transparency for the header */
+    color: white;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px; /* Adjusted height for a sleeker look */
+    backdrop-filter: blur(10px); /* Adds a blurred effect behind the header */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 30px; /* Increased spacing */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1.1rem; /* Slightly smaller for a cleaner look */
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Highlight color on hover */
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white for the login box */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    width: 320px; /* Slightly wider */
+    text-align: center;
+}
+
+h2 {
+    color: #003366; /* Dark blue color */
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px; 
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem; 
+    transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #00509e; /* Change border color on focus */
+}
+
+button {
+    background-color: #003366; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; /* Added transform effect */
+    width: 100%; 
+}
+
+button:hover {
+    background-color: #00509e; 
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+footer {
+    background-color: rgba(0, 51, 102, 0.9); /* Match header style */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%; 
+}
+
+
+</style>
+<body>
+    <header><nav><h1>Authentication</h1></nav></header>
+    
+    
+    <form action="{{ url_for('login') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
